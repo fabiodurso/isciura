@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 
-import { AngularFire } from 'angularfire2';
+import { AuthService } from '../../providers/auth-service';
 
 /*
   Generated class for the User page.
@@ -15,25 +15,17 @@ import { AngularFire } from 'angularfire2';
 })
 export class UserPage {
 
-  userProfile: any = null;
+  userProfile: any = this.authService.getUserProfile();
 
-  constructor(public navCtrl: NavController, public af: AngularFire, public platform: Platform) {
-      //console.log(af.auth.getAuth().facebook.displayName)
-      this.af.auth.subscribe( auth => {
-        if(auth){
-          console.log("User auth:" + auth.facebook);
-          this.userProfile = auth.facebook;
-        }
-      });
-  }
+  constructor(public navCtrl: NavController, private authService: AuthService) {}
 
   ionViewDidLoad() {
     console.log('Hello UserPage Page');
+    //this.userProfile = this.authService.getUserProfile();
   }
 
   logout(){
-    this.af.auth.logout();
-    //this.navCtrl.popToRoot();
+    this.authService.logout();
   }
 
 }

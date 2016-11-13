@@ -1,0 +1,29 @@
+<ion-menu [content]="content" *ngIf="userProfile">
+    
+    <ion-header>
+        <div class="spacer" style="width: 100%; height: 20px;"></div>
+        <div class="profile-image">
+            <img src="https://graph.facebook.com/{{userProfile.uid}}/picture?type=large"style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;"/>
+        </div>
+        <h3 style="color:white; font-weight:400; text-align:center; margin-bottom:0px;">{{ userProfile.displayName }}</h3>
+        <h6 style="color:white; font-weight:300; text-align:center; margin:0px;">{{userProfile.email}}</h6>
+        <div class="spacer" style="width: 100%; height: 20px;"></div>
+    </ion-header>
+
+    <ion-content class="side-menu-gradient">
+        <ion-list class="side-menu-list">
+            <ion-item no-lines detail-none menuClose class="side-menu-item" *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon item-left name={{p.icon}}></ion-icon>
+                {{p.title}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer>
+        <button class="logout-button" ion-button full (click)="logout()">LOGOUT</button>
+    </ion-footer>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" class="side-menu-gradient" #content swipeBackEnabled="false"></ion-nav>

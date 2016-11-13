@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, LoadingController, Loading } from 'ionic-angular';
-import { UserPage } from '../user/user';
-import { LoginPage } from '../login/login';
 
-import { AngularFire } from 'angularfire2';
+import { AuthService } from '../../providers/auth-service';
+
+import { MainPage } from '../main/main';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -14,22 +15,21 @@ export class LoginControllerPage {
 
   loader: Loading;
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public af: AngularFire) {
-    //this.af.auth.subscribe(auth => console.log(auth));
-  }
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private authService: AuthService ) {}
 
   ngOnInit() {
     this.presentLoading();
-    this.af.auth.subscribe( auth => {
+    this.authService.auth.subscribe( auth => {
       if (auth) {
         console.log(auth);
         console.log("autenticate");
-        this.showUserPage();
+        this.showMainPage();
       }else{
         console.log("not autenticate");
         this.showLoginPage();
       }
     });
+    //this.showLoginPage();
   }
 
   presentLoading() {
@@ -39,8 +39,8 @@ export class LoginControllerPage {
     this.loader.present();
   }
 
-  showUserPage(){
-    this.setRootPage(UserPage);
+  showMainPage(){
+    this.setRootPage(MainPage);
   }
 
   showLoginPage(){

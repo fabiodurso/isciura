@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { MenuPage } from '../pages/menu/menu';
-import { UserPage } from '../pages/user/user';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
+
+/*
+* PAGE
+*/
 import { LoginControllerPage } from '../pages/login-controller/login-controller';
 
+import { MainPage } from  '../pages/main/main';
+import { LoginPage } from '../pages/login/login';
 
-//Firebase
-import { AngularFireModule } from 'angularfire2';
+import { MenuPage } from  '../pages/menu/menu';
+import { UserPage } from  '../pages/user/user';
+import { HomePage } from  '../pages/home/home';
+import { TabsPage } from  '../pages/tabs/tabs';
+
+/*
+* PROVIDER
+*/
+
+import { AuthService } from '../providers/auth-service';
+import { AngularFireModule } from 'angularfire2'; //Firebase
+
 
 // Initialize Firebase
 export const firebaseConfig = {
@@ -24,11 +35,14 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+
+    LoginControllerPage,
+    MainPage,
+    LoginPage,
+
     MenuPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    LoginControllerPage,
     UserPage
   ],
   imports: [
@@ -38,13 +52,16 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
+    LoginControllerPage,
+    MainPage,
+    LoginPage,
+
     MenuPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    LoginControllerPage,
     UserPage
   ],
-  providers: []
+  providers: [AuthService]
 })
 export class AppModule {}

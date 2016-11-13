@@ -6,7 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar primary>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>{{ userProfile.displayName }}</ion-title>
   </ion-navbar>
 
@@ -15,21 +18,8 @@
 
 <ion-content>
 
-  <ion-card *ngIf="userProfile">
-    <!--<img [src]="userProfile.photoURL"/>-->
-    <img src="https://graph.facebook.com/{{userProfile.uid}}/picture?type=large"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{ userProfile.displayName }}
-      </ion-card-title>
-      <p>
-        Email: {{userProfile.email}}
-      </p>
-      <p>
-        UID: {{userProfile.uid}}
-      </p>
-    </ion-card-content>
-    <button ion-button full (click)="logout()"><ion-icon name="log-out"> LOGOUT</ion-icon></button>
+  <ion-card>
+
   </ion-card>
 
 </ion-content>

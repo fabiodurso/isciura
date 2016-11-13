@@ -1,5 +1,47 @@
 // http://ionicframework.com/docs/v2/theming/
 
+.profile-image {
+	img {
+		border-radius: 50%;
+		margin: 10px;
+		border: 4px solid $SIDEMENU_TRASPARENCY;
+	}
+}
+
+.logout-button{
+    margin-bottom: 0px;
+    background-color: $SIDEMENU_TRASPARENCY;
+}
+
+.side-menu-gradient{
+    background: -webkit-linear-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: linear-gradient(to bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+}
+
+.side-menu-list {
+    .side-menu-item, .item-ios, .item-md, .item-md{
+        background-color: inherit;
+        color: white;
+    }
+}
+
+/*.toolbar-background {
+  background-color: red;
+}*/
+/*
+.item-ios, .item-md, .item-md{
+
+    background-color: none !important;
+    .item-content{
+        background: none;
+        &.activated{
+            background: $SIDEMENU_TRASPARENCY;
+        }
+    }
+}*/
+
 
 // App Global Sass
 // --------------------------------------------------
